@@ -1,12 +1,10 @@
-using System;
 using System.IO;
-using System.Windows.Forms;
 
 namespace WinFormsApp6
 {
     public partial class Form1 : Form
     {
-        private string filePath = string.Empty;
+        private string _filePath = string.Empty;
 
         public Form1()
         {
@@ -15,40 +13,41 @@ namespace WinFormsApp6
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                openFileDialog.Filter = "текстові файли (*.txt)|*.txt|Всі файли (*.*)|*.*";
+                ofd.Filter = "Текстові файли (*.txt)|*.txt|Усі файли (*.*)|*.*";
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    filePath = openFileDialog.FileName;
-                    textBox1.Text = File.ReadAllText(filePath);
+                    _filePath = ofd.FileName;
+                    textBox1.Text = File.ReadAllText(_filePath); 
                 }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(filePath))
+            if (!string.IsNullOrEmpty(_filePath))
             {
-                MessageBox.Show("спочатку відкрийте файл!");
-                return;
+                File.WriteAllText(_filePath, textBox1.Text);
+                MessageBox.Show("файл оновлено!");
             }
-
-            try
-            {
-                File.WriteAllText(filePath, textBox1.Text);
-                MessageBox.Show("файл успішно збережено!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("помилка при збереженні: " + ex.Message);
+            else
+            {                using (SaveFileDialog sfd = new SaveFileDialog())
+                {
+                    sfd.Filter = "Текстові файли (*.txt)|*.txt";
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        _filePath = sfd.FileName;
+                        File.WriteAllText(_filePath, textBox1.Text);
+                        MessageBox.Show("файл збережено!");
+                    }
+                }
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-           
         }
     }
 }

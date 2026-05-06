@@ -35,17 +35,17 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(144, 107);
+            textBox1.Location = new Point(381, 195);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(276, 23);
+            textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 0;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
             // 
-            button1.Location = new Point(464, 107);
+            button1.Location = new Point(341, 286);
             button1.Name = "button1";
-            button1.Size = new Size(77, 54);
+            button1.Size = new Size(94, 29);
             button1.TabIndex = 1;
             button1.Text = "відкрити";
             button1.UseVisualStyleBackColor = true;
@@ -53,9 +53,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(464, 188);
+            button2.Location = new Point(538, 293);
             button2.Name = "button2";
-            button2.Size = new Size(77, 49);
+            button2.Size = new Size(94, 29);
             button2.TabIndex = 2;
             button2.Text = "зберегти";
             button2.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button2);
